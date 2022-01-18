@@ -35,6 +35,9 @@ const list = [
     54511,
     54512,
     54513,
+]
+
+const thirdRewardsAdd = [
     54514,
     54515,
     54516,
@@ -50,17 +53,14 @@ const defaultState = {
     firstReward: []
 }
 
-export default class LotteryBox extends React.Component<
-    LotteryBoxProps,
-    LotteryBoxState
-> {
+export default class LotteryBox extends React.Component<LotteryBoxProps, LotteryBoxState> {
     constructor(props: LotteryBoxProps) {
         super(props);
         this.state = defaultState;
     }
 
-    randomReward = (is1stReward?: boolean) => {
-        let list = this.state.list
+    randomReward = (is1stReward?: boolean, listInput?: number[]) => {
+        let list = listInput || this.state.list
         if (is1stReward) {
             list = firstRewards
         }
@@ -101,8 +101,22 @@ export default class LotteryBox extends React.Component<
         });
     };
 
-    randomize = () => {
-        const reward = this.randomReward();
+    randomize = (thirdReward = false) => {
+        let { list } = this.state
+        if (thirdReward) {
+            list = [...list, ...thirdRewardsAdd]
+            this.setState({ list: [...list] });
+        } else {
+            list = list.filter((l: number) => {
+                if (thirdRewardsAdd.includes(l)) {
+                    return 0;
+                }
+                return 1;
+            })
+            this.setState({ list: [...list] });
+        }
+
+        const reward = this.randomReward(false, list);
 
         this.setState({ onTheTime: true });
 
@@ -168,13 +182,13 @@ export default class LotteryBox extends React.Component<
                 <div className="row">
                     <button
                         id="btn"
-                        onClick={this.randomize}
+                        onClick={() => this.randomize(true)}
                     >
                        Giải Ba
                     </button>
                     <button
                         id="btn"
-                        onClick={this.randomize}
+                        onClick={() => this.randomize()}
                     >
                        Giải Nhì
                     </button>
