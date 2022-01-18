@@ -3,6 +3,11 @@ interface LotteryBoxProps {}
 interface LotteryBoxState {
     number: FixedLengthArray<number, 7>;
     effect: boolean;
+    current: number;
+    arr: array;
+    onTheTime: boolean;
+    list: array;
+    firstReward: array;
 }
 
 interface LotteryItemProps {
@@ -10,6 +15,7 @@ interface LotteryItemProps {
     number: number;
     decrypting: boolean;
     color: string;
+    onTheTime: boolean;
 }
 
 interface LotteryItemState {

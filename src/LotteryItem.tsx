@@ -26,11 +26,11 @@ export default class LotteryItem extends React.Component<
             });
 
             this.timer && clearInterval(this.timer);
-        }, 1000 * +this.props.index + 1000);
+        }, this.props.onTheTime ? (1000 * + this.props.index + 1000) : 2000);
     }
 
     randomNumber() {
-        this.setState({ number: Math.round(Math.random() * 44) + 1 });
+        this.setState({ number: Math.round(Math.random() * 8) + 1 });
     }
 
     componentDidUpdate(nextProps: LotteryItemProps) {
