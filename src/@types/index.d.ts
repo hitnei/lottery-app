@@ -5,7 +5,6 @@ interface LotteryBoxState {
     effect: boolean;
     current: number;
     arr: array;
-    onTheTime: boolean;
     list: array;
     firstReward: array;
 }
@@ -15,7 +14,6 @@ interface LotteryItemProps {
     number: number;
     decrypting: boolean;
     color: string;
-    onTheTime: boolean;
 }
 
 interface LotteryItemState {

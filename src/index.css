@@ -97,7 +97,7 @@ h1 {
 }
 
 #numbers .ball.done {
-    animation: done 0.3s linear;
+    animation: done 0.5s linear;
 }
 
 #numbers .ball:last-child {

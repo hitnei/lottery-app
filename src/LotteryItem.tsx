@@ -1,3 +1,4 @@
+import { clear } from "console";
 import React from "react";
 
 export default class LotteryItem extends React.Component<
@@ -16,9 +17,18 @@ export default class LotteryItem extends React.Component<
 
     decryptEffect() {
         this.setState({ decryptingDone: "" });
-        this.timer = setInterval(() => {
-            this.randomNumber();
-        }, 10);
+        let time = 10
+        let total = 10
+        const temp = () => setTimeout(() => {
+            if (total <= 2500) {
+                total += time
+                time += 10
+                this.randomNumber();
+                temp()
+            }
+            console.log("🚀 ~ file: LotteryItem.tsx ~ line 23 ~ temp ~ time", time)
+        }, time);
+        temp()
         setTimeout(() => {
             this.setState({
                 decryptingDone: "done",
@@ -26,7 +36,7 @@ export default class LotteryItem extends React.Component<
             });
 
             this.timer && clearInterval(this.timer);
-        }, this.props.onTheTime ? (1000 * + this.props.index + 1000) : 2000);
+        }, 3000);
     }
 
     randomNumber() {
