@@ -93,7 +93,7 @@ export default class LotteryBox extends React.Component<LotteryBoxProps, Lottery
     randomize2nd = () => {
         let arrayReward = this.state.firstReward
         if (!arrayReward.length) {
-            const reward = this.randomReward(true)
+            const reward = this.randomReward(false)
             arrayReward = `${reward}`.split('')
             this.setState({ firstReward: [...arrayReward] })
         }
@@ -110,7 +110,7 @@ export default class LotteryBox extends React.Component<LotteryBoxProps, Lottery
     randomize3th = () => {
         let arrayReward = this.state.firstReward
         if (!arrayReward.length) {
-            const reward = this.randomReward(true)
+            const reward = this.randomReward(false)
             arrayReward = `${reward}`.split('')
             this.setState({ firstReward: [...arrayReward] })
         }
@@ -123,45 +123,6 @@ export default class LotteryBox extends React.Component<LotteryBoxProps, Lottery
             current: this.state.current + 1,
         });
     };
-
-    // randomize = (thirdReward = false) => {
-    //     let { list } = this.state
-    //     if (thirdReward) {
-    //         list = [...list, ...thirdRewardsAdd]
-    //         this.setState({ list: [...list] });
-    //     } else {
-    //         list = list.filter((l: number) => {
-    //             if (thirdRewardsAdd.includes(l)) {
-    //                 return 0;
-    //             }
-    //             return 1;
-    //         })
-    //         this.setState({ list: [...list] });
-    //     }
-
-    //     const reward = this.randomReward(false, list);
-
-    //     const arrayReward = `${reward}`.split('')
-
-    //     const number = this.state.number
-    //     number[this.state.current] = arrayReward[this.state.current]
-
-    //     // const numberCopy = numbers.map((x) => x);
-
-    //     // for (let i = 0; i <= 7; i++) {
-    //     //     const random = Math.floor(
-    //     //         Math.random() * (numberCopy.length - 1)
-    //     //     );
-    //     //     this.state.arr.push(numberCopy[random] + 1);
-    //     //     numberCopy.splice(random, 1);
-    //     // }
-
-    //     this.setState({ number: arrayReward, effect: true });
-
-    //     setTimeout(() => {
-    //         this.setState({ effect: false });
-    //     }, 8000);
-    // };
 
     render() {
         return (
@@ -201,13 +162,13 @@ export default class LotteryBox extends React.Component<LotteryBoxProps, Lottery
                 <div className="row">
                     <button
                         id="btn"
-                        onClick={() => this.randomize2nd()}
+                        onClick={() => this.randomize3th()}
                     >
                        Giải Ba
                     </button>
                     <button
                         id="btn"
-                        onClick={() => this.randomize3th()}
+                        onClick={() => this.randomize2nd()}
                     >
                        Giải Nhì
                     </button>
