@@ -20,13 +20,12 @@ export default class LotteryItem extends React.Component<
         let time = 10
         let total = 10
         const temp = () => setTimeout(() => {
-            if (total <= 2500) {
+            if (total <= 4500) {
                 total += time
                 time += 10
                 this.randomNumber();
                 temp()
             }
-            console.log("🚀 ~ file: LotteryItem.tsx ~ line 23 ~ temp ~ time", time)
         }, time);
         temp()
         setTimeout(() => {
@@ -36,7 +35,7 @@ export default class LotteryItem extends React.Component<
             });
 
             this.timer && clearInterval(this.timer);
-        }, 3000);
+        }, 5000);
     }
 
     randomNumber() {
