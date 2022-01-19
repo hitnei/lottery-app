@@ -130,25 +130,25 @@ export default class LotteryBox extends React.Component<LotteryBoxProps, Lottery
                 <div id="numbers">
                     <LotteryItem
                         index="0"
-                        color="blue"
+                        color="yellow"
                         number={this.state.number[0]}
                         decrypting={this.state.number[0]}
                     />
                     <LotteryItem
                         index="1"
-                        color="blue"
+                        color="yellow"
                         number={this.state.number[1]}
                         decrypting={this.state.number[1]}
                     />
                     <LotteryItem
                         index="2"
-                        color="blue"
+                        color="yellow"
                         number={this.state.number[2]}
                         decrypting={this.state.number[2]}
                     />
                     <LotteryItem
                         index="3"
-                        color="blue"
+                        color="yellow"
                         number={this.state.number[3]}
                         decrypting={this.state.number[3]}
                     />
