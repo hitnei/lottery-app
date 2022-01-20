@@ -2,12 +2,11 @@ interface LotteryBoxProps {}
 
 interface LotteryBoxState {
     number: FixedLengthArray<number, 7>;
-    effect: boolean;
     current: number;
     arr: array;
-    list: array;
     firstReward: array;
     resetAnimation: boolean;
+    listSelected: array;
 }
 
 interface LotteryItemProps {

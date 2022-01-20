@@ -31,26 +31,25 @@ const list = [
     54505,
     54506,
 
-    54510,
-    54511,
-    54512,
-    54513,
+    59410,
+    59411,
+    59412,
+    59413,
 ]
 
 const thirdRewardsAdd = [
-    54514,
-    54515,
-    54516,
+    59414,
+    59415,
+    59416,
 ]
 
 const defaultState = {
     number: ['?', '?', '?', '?', '?'],
-    effect: false,
     current: 0,
     arr: [],
-    list: list,
     firstReward: [],
     resetAnimation: false,
+    listSelected: []
 }
 
 export default class LotteryBox extends React.Component<LotteryBoxProps, LotteryBoxState> {
@@ -59,59 +58,24 @@ export default class LotteryBox extends React.Component<LotteryBoxProps, Lottery
         this.state = defaultState;
     }
 
-    randomReward = (is1stReward?: boolean, listInput?: number[]) => {
-        let list = listInput || this.state.list
-        if (is1stReward) {
-            list = firstRewards
-        }
+    randomReward = (list: number[]) => {
+        const { listSelected } = this.state
+        list = list.filter(l => !listSelected.includes(l))
+        console.log("🚀 ~ file: LotteryBox.tsx ~ line 64 ~ LotteryBox ~ list", list)
         const result = Math.floor(
             Math.random() * list.length
         )
-        const resultReward = list.splice(result, 1)[0]
+        const resultReward = list[result]
 
-        this.setState({ ...this.state, list: list})
+        this.setState({ listSelected: [...listSelected, resultReward]})
 
         return resultReward;
     }
 
-    randomize1st = () => {
+    randomize = (list: number[]) => {
         let arrayReward = this.state.firstReward
         if (!arrayReward.length) {
-            const reward = this.randomReward(true)
-            arrayReward = `${reward}`.split('')
-            this.setState({ firstReward: [...arrayReward] })
-        }
-
-        const number = this.state.number
-        number[this.state.current] = arrayReward[this.state.current]
-
-        this.setState({
-            number: [...number],
-            current: this.state.current + 1,
-        });
-    };
-
-    randomize2nd = () => {
-        let arrayReward = this.state.firstReward
-        if (!arrayReward.length) {
-            const reward = this.randomReward(false)
-            arrayReward = `${reward}`.split('')
-            this.setState({ firstReward: [...arrayReward] })
-        }
-
-        const number = this.state.number
-        number[this.state.current] = arrayReward[this.state.current]
-
-        this.setState({
-            number: [...number],
-            current: this.state.current + 1,
-        });
-    };
-
-    randomize3th = () => {
-        let arrayReward = this.state.firstReward
-        if (!arrayReward.length) {
-            const reward = this.randomReward(false, [...this.state.list, ...thirdRewardsAdd])
+            const reward = this.randomReward(list)
             arrayReward = `${reward}`.split('')
             this.setState({ firstReward: [...arrayReward] })
         }
@@ -175,19 +139,19 @@ export default class LotteryBox extends React.Component<LotteryBoxProps, Lottery
                 <div className="row">
                     <button
                         id="btn"
-                        onClick={() => this.randomize3th()}
+                        onClick={() => this.randomize([...list, ...thirdRewardsAdd, ...firstRewards])}
                     >
                        Giải Ba
                     </button>
                     <button
                         id="btn"
-                        onClick={() => this.randomize2nd()}
+                        onClick={() => this.randomize([...list, ...firstRewards])}
                     >
                        Giải Nhì
                     </button>
                     <button
                         id="btn"
-                        onClick={this.randomize1st}
+                        onClick={() => this.randomize(firstRewards)}
                     >
                        Giải Nhất
                     </button>
