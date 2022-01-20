@@ -63,7 +63,7 @@ h1 {
     display: flex;
     margin-bottom: 20px;
     padding: 30px;
-    border: 3px solid pink;
+    border: 3px solid #ffeaa2;
     border-radius: 20px;
     align-items: center;
     flex-direction: column;
@@ -169,8 +169,8 @@ h1 {
     position: relative;
     display: block;
     padding: 1rem 2.5rem 1.6rem;
-    color: #666;
-    border: 2px solid #666;
+    color: #ffeaa2;
+    border: 2px solid #ffeaa2;
     border-radius: 6px;
     overflow: hidden;
     cursor: pointer;
@@ -182,7 +182,7 @@ h1 {
 #btn:active {
     padding: 1rem 2.5rem 1rem;
     margin-top: 0.6rem;
-    background: #999;
+    background: #ffeaa2;
     color: #fff;
 }
 
@@ -196,12 +196,12 @@ h1 {
     width: 100%;
     background-image: repeating-linear-gradient(
         45deg,
-        #666,
-        #666 1px,
+        #ffeaa2,
+        #ffeaa2 1px,
         transparent 2px,
         transparent 5px
     );
-    border-top: 1px solid #666;
+    border-top: 1px solid #ffeaa2;
     transition: 0.5s;
 }
 
@@ -221,25 +221,25 @@ h1 {
     #title,
     #btn,
     .plus {
-        color: #bbb;
+        color: #ffeaa2;
     }
 
     #btn {
-        border-color: #bbb;
+        border-color: #ffeaa2;
     }
 
     #btn::after {
         background-image: repeating-linear-gradient(
             45deg,
-            #bbb,
-            #bbb 1px,
+            #ffeaa2,
+            #ffeaa2 1px,
             transparent 2px,
             transparent 5px
         );
     }
 
     #btn:active {
-        background: #444;
+        background: rgba(252,220,139,1);
     }
 }
 
