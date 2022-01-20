@@ -49,7 +49,8 @@ const defaultState = {
     current: 0,
     arr: [],
     list: list,
-    firstReward: []
+    firstReward: [],
+    resetAnimation: false,
 }
 
 export default class LotteryBox extends React.Component<LotteryBoxProps, LotteryBoxState> {
@@ -110,7 +111,7 @@ export default class LotteryBox extends React.Component<LotteryBoxProps, Lottery
     randomize3th = () => {
         let arrayReward = this.state.firstReward
         if (!arrayReward.length) {
-            const reward = this.randomReward(false)
+            const reward = this.randomReward(false, [...this.state.list, ...thirdRewardsAdd])
             arrayReward = `${reward}`.split('')
             this.setState({ firstReward: [...arrayReward] })
         }
@@ -124,35 +125,47 @@ export default class LotteryBox extends React.Component<LotteryBoxProps, Lottery
         });
     };
 
+    reset = () => {
+        this.setState({ number: ['?', '?', '?', '?', '?'], arr: [], current: 0, firstReward: [], resetAnimation: true })
+        setTimeout(() => {
+            this.setState({ resetAnimation: false })
+        }, 1000);
+    }
+
     render() {
         return (
             <>
                 <div id="numbers">
                     <LotteryItem
+                        resetAnimation={this.state.resetAnimation}
                         index="0"
                         color="yellow"
                         number={this.state.number[0]}
                         decrypting={this.state.number[0]}
                     />
                     <LotteryItem
+                        resetAnimation={this.state.resetAnimation}
                         index="1"
                         color="yellow"
                         number={this.state.number[1]}
                         decrypting={this.state.number[1]}
                     />
                     <LotteryItem
+                        resetAnimation={this.state.resetAnimation}
                         index="2"
                         color="yellow"
                         number={this.state.number[2]}
                         decrypting={this.state.number[2]}
                     />
                     <LotteryItem
+                        resetAnimation={this.state.resetAnimation}
                         index="3"
                         color="yellow"
                         number={this.state.number[3]}
                         decrypting={this.state.number[3]}
                     />
                     <LotteryItem
+                        resetAnimation={this.state.resetAnimation}
                         index="4"
                         color="red"
                         number={this.state.number[4]}
@@ -178,15 +191,10 @@ export default class LotteryBox extends React.Component<LotteryBoxProps, Lottery
                     >
                        Giải Nhất
                     </button>
-                </div>
-                <div>
-                    <button
-                        id="btn"
-                        className='mt-2'
-                        onClick={() => this.setState({ number: ['?', '?', '?', '?', '?'], arr: [], current: 0, firstReward: [] })}
-                    >
-                       Reset
-                    </button>
+                    <i
+                        className={`fas fa-sync-alt reset ${this.state.resetAnimation && 'resetAnimation'}`}
+                        onClick={this.reset}
+                    ></i>
                 </div>
             </>
         );

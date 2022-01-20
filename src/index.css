@@ -15,7 +15,7 @@
 }
 
 html, body * {
-    font-family: Roboto, sans-serif !important;
+    font-family: Roboto, sans-serif;
 }
 
 html,
@@ -46,6 +46,7 @@ h1 {
 #title {
     font-size: 3rem;
     margin: 2rem 0;
+    color: #ffeaa2 !important;
 }
 
 #root {
@@ -245,6 +246,7 @@ h1 {
 
 .row {
     display: flex;
+    position: relative;
 }
 
 .row button:not(:last-child) {
@@ -253,4 +255,29 @@ h1 {
 
 .mt-2 {
     margin-top: 0.75rem;
+}
+
+.reset {
+    color: #ffeaa2;
+    position: absolute;
+    right: -30px;
+    font-size: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+.resetAnimation {
+    animation-name: reset;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+}
+
+@keyframes reset {
+    from {
+        transform: translateY(-50%) rotate(0deg);
+    }
+    to {
+        transform: translateY(-50%) rotate(360deg);
+    }
 }

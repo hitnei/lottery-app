@@ -7,6 +7,7 @@ interface LotteryBoxState {
     arr: array;
     list: array;
     firstReward: array;
+    resetAnimation: boolean;
 }
 
 interface LotteryItemProps {
@@ -14,6 +15,7 @@ interface LotteryItemProps {
     number: number;
     decrypting: boolean;
     color: string;
+    resetAnimation: boolean;
 }
 
 interface LotteryItemState {

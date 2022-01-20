@@ -3,7 +3,7 @@ import LotteryBox from "./LotteryBox";
 export default function App() {
     return (
         <>
-            <h1 id="title">LOTTERY END YEAR</h1>
+            <h1 id="title">Quay Số Trúng Thưởng</h1>
             <LotteryBox />
         </>
     );

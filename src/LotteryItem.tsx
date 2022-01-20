@@ -1,4 +1,3 @@
-import { clear } from "console";
 import React from "react";
 
 export default class LotteryItem extends React.Component<
@@ -27,7 +26,7 @@ export default class LotteryItem extends React.Component<
                 temp()
             }
         }, time);
-        temp()
+        !this.props.resetAnimation && temp()
         setTimeout(() => {
             this.setState({
                 decryptingDone: "done",
@@ -35,7 +34,7 @@ export default class LotteryItem extends React.Component<
             });
 
             this.timer && clearInterval(this.timer);
-        }, 5000);
+        }, this.props.resetAnimation ? 0 : 5000);
     }
 
     randomNumber() {
