@@ -14,8 +14,8 @@
     }
 }
 
-html {
-    font-family: Roboto !important;
+html, body * {
+    font-family: Roboto, sans-serif !important;
 }
 
 html,
